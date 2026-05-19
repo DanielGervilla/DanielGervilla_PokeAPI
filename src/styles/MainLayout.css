@@ -1,0 +1,94 @@
+/* MainLayout Styles */
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background 0.5s ease;
+}
+
+.header {
+  background: linear-gradient(135deg, #1E90FF 0%, #FFD700 50%, #FF1744 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-bottom: 4px solid;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: white;
+  margin: 0;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.team-change-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-change-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.team-change-btn:active {
+  transform: scale(0.95);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
+  flex: 1;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    gap: 8px;
+  }
+
+  .team-change-btn {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .team-change-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}

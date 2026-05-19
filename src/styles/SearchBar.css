@@ -1,0 +1,125 @@
+/* Search Bar Styles */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background: linear-gradient(135deg, #FF6B35 0%, #FF1744 100%);
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 15px 12px 40px;
+  border: 2px solid white;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: white;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 16px;
+  border: 2px solid white;
+  border-radius: 20px;
+  background: transparent;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.filter-btn.active {
+  background: white;
+  color: #FF1744;
+  font-weight: bold;
+}
+
+.shiny-btn {
+  flex: 0 0 auto;
+}
+
+.type-select {
+  padding: 10px 12px;
+  border: 2px solid white;
+  border-radius: 20px;
+  background: transparent;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.type-select:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.type-select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.type-select option {
+  background: #333;
+  color: white;
+  padding: 10px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .search-container {
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .search-input {
+    padding: 10px 12px 10px 35px;
+    font-size: 0.95rem;
+  }
+
+  .filter-btn,
+  .type-select {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}

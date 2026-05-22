@@ -7,16 +7,16 @@
 }
 
 .header {
-  background: linear-gradient(135deg, #1E90FF 0%, #FFD700 50%, #FF1744 100%);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border-bottom: 4px solid;
+  background: #111111;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .header-content {
-  max-width: 1200px;
+  max-width: 1126px;
   margin: 0 auto;
   padding: 15px 20px;
   display: flex;
@@ -26,26 +26,27 @@
 }
 
 .logo {
-  font-size: 1.8rem;
-  color: white;
+  font-size: 1.6rem;
+  color: #FFFFFF;
   margin: 0;
-  font-weight: bold;
+  font-weight: 900;
   display: flex;
   align-items: center;
   gap: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
 }
 
 .team-change-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  color: white;
+  padding: 8px 20px;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.95rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 0.85rem;
+  backdrop-filter: blur(4px);
 }
 
 .team-change-btn:hover {

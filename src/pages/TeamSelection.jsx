@@ -5,9 +5,9 @@ export default function TeamSelection() {
   const { selectTeam } = useTeam();
 
   const teams = [
-    { id: 'blue', name: 'Equip Blau', color: '#1E90FF', emoji: '💙' },
-    { id: 'yellow', name: 'Equip Groc', color: '#FFD700', emoji: '💛' },
-    { id: 'red', name: 'Equip Vermell', color: '#FF1744', emoji: '❤️' },
+    { id: 'blue', name: 'BLAU', color: '#1E90FF' },
+    { id: 'yellow', name: 'GROC', color: '#FFD700' },
+    { id: 'red', name: 'VERMELL', color: '#FF1744' },
   ];
 
   return (
@@ -21,10 +21,19 @@ export default function TeamSelection() {
             <button
               key={team.id}
               className={`team-button team-${team.id}`}
-              style={{ borderColor: team.color, backgroundColor: `${team.color}15` }}
+              style={{ 
+                border: '4px solid black', 
+                backgroundColor: 'white',
+                boxShadow: `8px 8px 0px ${team.color}`,
+                padding: '2rem',
+                transition: 'transform 0.1s',
+                cursor: 'pointer',
+                fontFamily: '"Courier New", Courier, monospace'
+              }}
               onClick={() => selectTeam(team.id)}
+              onMouseDown={(e) => e.currentTarget.style.transform = 'translate(4px, 4px)'}
+              onMouseUp={(e) => e.currentTarget.style.transform = 'translate(0px, 0px)'}
             >
-              <span className="team-emoji">{team.emoji}</span>
               <h2>{team.name}</h2>
             </button>
           ))}

@@ -1,7 +1,7 @@
 /* Team Selection Styles */
 .team-selection-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1E90FF 0%, #FFD700 50%, #FF1744 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F5F9FF 50%, #FFF5E6 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@
   content: '🎮';
   position: absolute;
   font-size: 150px;
-  opacity: 0.1;
+  opacity: 0.08;
   top: -20px;
   left: -20px;
   animation: float 3s ease-in-out infinite;
@@ -24,7 +24,7 @@
   content: '⭐';
   position: absolute;
   font-size: 100px;
-  opacity: 0.1;
+  opacity: 0.08;
   bottom: -30px;
   right: -30px;
   animation: float 4s ease-in-out infinite;
@@ -45,17 +45,17 @@
 
 .team-title {
   font-size: 2.5rem;
-  color: white;
+  color: #DD6E55;
   margin-bottom: 10px;
   font-weight: bold;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .team-subtitle {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.95);
+  color: #2C3E50;
   margin-bottom: 40px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .teams-grid {
@@ -68,22 +68,23 @@
 .team-button {
   padding: 30px 20px;
   border: 4px solid;
-  border-radius: 15px;
+  border-radius: 20px;
   cursor: pointer;
-  background: white;
-  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #2a2a3e 0%, #1f1f2e 100%);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
   font-weight: bold;
   font-size: 1.3rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  color: white;
 }
 
 .team-button:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 16px 40px rgba(255, 107, 53, 0.4);
 }
 
 .team-button:active {

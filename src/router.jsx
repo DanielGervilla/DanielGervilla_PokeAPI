@@ -3,6 +3,7 @@ import App from "./App";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import PokemonDetail from "./pages/PokemonDetail";
+import Favorites from "./pages/Favorites";
 
 export const router = createBrowserRouter([
   {
@@ -17,8 +18,12 @@ export const router = createBrowserRouter([
             Component: Home,
           },
           {
-            path: "/pokemon/:name",
+            path: "pokemon/:name",
             Component: PokemonDetail,
+          },
+          {
+            path: "favorites",
+            Component: Favorites,
           },
         ],
       },

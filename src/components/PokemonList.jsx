@@ -8,15 +8,23 @@ import '../styles/PokemonList.css';
 
 export default function PokemonList() {
   const navigate = useNavigate();
-  const { toggleLike, team } = useTeam();
+  const { toggleLike, team, likes, isLiked } = useTeam();
   const [allPokemons, setAllPokemons] = useState([]);
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [isShinyOnly, setIsShinyOnly] = useState(false);
+  const [isFavoritesOnly, setIsFavoritesOnly] = useState(false);
   const [selectedType, setSelectedType] = useState("");
   const [types, setTypes] = useState([]);
   const [error, setError] = useState("");
+
+  const teamColors = {
+    blue: '#3b82f6',
+    yellow: '#eab308',
+    red: '#ef4444',
+  };
+  const accentColor = teamColors[team] || '#ef4444';
 
   // Cargar Pokémon iniciales
   useEffect(() => {
@@ -69,8 +77,13 @@ export default function PokemonList() {
       );
     }
 
+    // Filtro Favoritos
+    if (isFavoritesOnly) {
+      filtered = filtered.filter((pokemon) => isLiked(pokemon.id));
+    }
+
     setFilteredPokemons(filtered);
-  }, [searchTerm, selectedType, isShinyOnly, allPokemons]);
+  }, [searchTerm, selectedType, isShinyOnly, isFavoritesOnly, allPokemons, isLiked]);
 
   if (loading) {
     return <div className="loading">Carregant Pokédex...</div>;
@@ -78,8 +91,26 @@ export default function PokemonList() {
 
   return (
     <section className="pokemon-list-section">
-      <h2 className="section-title">Pokédex</h2>
-      
+      <div className="list-header" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px' }}>
+        <h2 
+          className="section-title" 
+          style={{ 
+            margin: 0, 
+            textTransform: 'uppercase', 
+            fontWeight: '900', 
+            fontSize: '3rem', 
+            color: 'black', 
+            backgroundColor: 'white',
+            padding: '10px 30px',
+            border: '5px solid black',
+            boxShadow: `8px 8px 0px ${accentColor}`,
+            transform: 'skew(-2deg)'
+          }}
+        >
+          POKÉDEX
+        </h2>
+      </div>
+
       <SearchBar
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
@@ -89,13 +120,26 @@ export default function PokemonList() {
         onTypeChange={setSelectedType}
         types={types}
         team={team}
+        isFavoritesOnly={isFavoritesOnly}
+        onFavoritesFilter={setIsFavoritesOnly}
+        favoritesCount={(likes || []).length}
       />
 
       {error && <div className="error-message">{error}</div>}
 
-      <div className="results-info">
-        Mostrant {filteredPokemons.length} de {allPokemons.length} Pokémon
-      </div>
+      {(searchTerm || selectedType || isShinyOnly || isFavoritesOnly) && (
+        <button 
+          onClick={() => {
+            setSearchTerm("");
+            setSelectedType("");
+            setIsShinyOnly(false);
+            setIsFavoritesOnly(false);
+          }}
+          style={{ marginBottom: '20px', background: 'none', border: 'none', color: accentColor, textDecoration: 'underline', cursor: 'pointer', fontWeight: '600', padding: 0 }}
+        >
+          Neteja tots els filtres
+        </button>
+      )}
 
       {filteredPokemons.length === 0 ? (
         <div className="no-results">
@@ -113,6 +157,7 @@ export default function PokemonList() {
               <PokemonCard
                 pokemon={pokemon}
                 onLikeClick={toggleLike}
+                isShinyOnly={isShinyOnly}
               />
             </div>
           ))}

@@ -32,9 +32,10 @@ export const getPokemonsWithDetails = async (limit = 20, offset = 0) => {
   }
 };
 
-export const getPokemonByName = async (name) => {
+export const getPokemonByName = async (identifier) => {
   try {
-    const response = await api.get(`/pokemon/${name.toLowerCase()}`);
+    const id = typeof identifier === 'number' ? identifier : identifier.toLowerCase();
+    const response = await api.get(`/pokemon/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error obtenint Pokémon:", error);

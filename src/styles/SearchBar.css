@@ -1,13 +1,22 @@
 /* Search Bar Styles */
-.search-container {
+.modern-search-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
   padding: 20px;
-  background: linear-gradient(135deg, #FF6B35 0%, #FF1744 100%);
-  border-radius: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  margin-bottom: 30px;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
+  border: 4px solid black;
+}
+
+.search-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .search-bar {
@@ -15,17 +24,17 @@
   display: flex;
   align-items: center;
 }
-
 .search-input {
   width: 100%;
-  padding: 12px 15px 12px 40px;
-  border: 2px solid white;
-  border-radius: 25px;
+  padding: 12px 15px;
+  padding-left: 20px; /* Adjust for icon if added */
+  border: none; /* Remove default border */
+  border-radius: 12px;
   font-size: 1rem;
-  transition: all 0.3s ease;
-  background: white;
+  transition: all 0.2s ease;
+  background: transparent;
   color: #333;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* border-left will be dynamic via inline style */
 }
 
 .search-input::placeholder {
@@ -34,86 +43,93 @@
 
 .search-input:focus {
   outline: none;
-  border-color: white;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
+  /* border-color will be dynamic via inline style */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .search-icon {
-  position: absolute;
-  left: 15px;
-  font-size: 1.2rem;
-  pointer-events: none;
+  /* If you want a search icon, consider using an SVG inside the .search-input-group */
+  /* For now, it's removed as per previous diff */
+  display: none;
 }
 
 .filters {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.filter-btn {
-  padding: 10px 16px;
-  border: 2px solid white;
-  border-radius: 20px;
-  background: transparent;
-  color: white;
-  font-weight: bold;
+.chip-btn {
+  padding: 8px 15px;
+  border: 1px solid; /* Dynamic color via inline style */
+  border-radius: 20px; /* Pill shape */
+  background-color: var(--soft-color); /* Dynamic color via inline style */
+  color: var(--accent-color); /* Dynamic color via inline style */
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.filter-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
+.chip-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.filter-btn.active {
-  background: white;
-  color: #FF1744;
-  font-weight: bold;
-}
-
-.shiny-btn {
-  flex: 0 0 auto;
+.chip-btn.active {
+  /* Background and color will be dynamic via inline style */
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .type-select {
-  padding: 10px 12px;
-  border: 2px solid white;
+  padding: 8px 15px;
+  border: 1px solid; /* Dynamic color via inline style */
   border-radius: 20px;
-  background: transparent;
-  color: white;
-  font-weight: bold;
+  background-color: var(--soft-color); /* Dynamic color via inline style */
+  color: var(--accent-color); /* Dynamic color via inline style */
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  appearance: none; /* Remove default select arrow */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23d97706" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 30px; /* Space for custom arrow */
 }
 
 .type-select:hover {
-  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .type-select:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .type-select option {
-  background: #333;
-  color: white;
-  padding: 10px;
+  background-color: white; /* Ensure options are readable */
+  color: #333;
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  .search-container {
+  .modern-search-wrapper {
     padding: 15px;
     gap: 12px;
   }
 
   .search-input {
-    padding: 10px 12px 10px 35px;
+    padding: 10px 12px;
     font-size: 0.95rem;
   }
 

@@ -23,14 +23,17 @@ export default function SearchBar({ searchTerm, onSearchChange, onShinyFilter, i
       <div className="search-input-group">
         <input
           type="text"
-          placeholder="A qui busques avui?"
+          placeholder="BUSCA EL TEU POKÉMON..."
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
           className="search-input"
           style={{ 
-            border: '3px solid black', 
+            border: '4px solid black', 
             borderRadius: '0',
-            fontFamily: 'monospace'
+            fontFamily: 'monospace',
+            fontWeight: '900',
+            textTransform: 'uppercase',
+            fontSize: '1.1rem'
           }}
         />
         {/* Icono de búsqueda puede ser un SVG o un emoji dentro del input o como un elemento separado */}
@@ -44,14 +47,17 @@ export default function SearchBar({ searchTerm, onSearchChange, onShinyFilter, i
           style={{
             backgroundColor: isFavoritesOnly ? theme.accent : 'white',
             color: isFavoritesOnly ? 'white' : theme.accent,
-            border: '2px solid black',
+            border: '4px solid black',
             borderRadius: '0',
-            boxShadow: '3px 3px 0px black',
-            fontWeight: 'bold',
-            padding: '8px 15px'
+            boxShadow: isFavoritesOnly ? 'none' : '6px 6px 0px black',
+            transform: isFavoritesOnly ? 'translate(4px, 4px)' : 'none',
+            fontWeight: '900',
+            padding: '12px 24px',
+            textTransform: 'uppercase',
+            cursor: 'pointer'
           }}
         >
-          ❤️ Favorits ({favoritesCount})
+          Favorits ({favoritesCount})
         </button>
 
         <button
@@ -60,11 +66,14 @@ export default function SearchBar({ searchTerm, onSearchChange, onShinyFilter, i
           style={{
             backgroundColor: isShinyOnly ? theme.accent : 'white',
             color: isShinyOnly ? 'white' : theme.accent,
-            border: '2px solid black',
+            border: '4px solid black',
             borderRadius: '0',
-            boxShadow: '3px 3px 0px black',
-            fontWeight: 'bold',
-            padding: '8px 15px'
+            boxShadow: isShinyOnly ? 'none' : '6px 6px 0px black',
+            transform: isShinyOnly ? 'translate(4px, 4px)' : 'none',
+            fontWeight: '900',
+            padding: '12px 24px',
+            textTransform: 'uppercase',
+            cursor: 'pointer'
           }}
         >
           ✨ Shiny
@@ -75,18 +84,19 @@ export default function SearchBar({ searchTerm, onSearchChange, onShinyFilter, i
           onChange={(e) => onTypeChange(e.target.value)}
           className="type-select"
           style={{
-            border: '2px solid black',
+            border: '4px solid black',
             borderRadius: '0',
             backgroundColor: 'white',
             color: 'black',
             fontFamily: 'monospace',
-            fontWeight: 'bold',
-            padding: '8px 15px',
-            height: '40px',
-            boxShadow: '3px 3px 0px black'
+            fontWeight: '900',
+            padding: '12px 15px',
+            height: '100%',
+            boxShadow: '6px 6px 0px black',
+            textTransform: 'uppercase'
           }}
         >
-          <option value="">Tots els tipus</option>
+          <option value="">TOTS ELS TIPUS</option>
           {types.map((type) => (
             <option key={type} value={type}>
               {type.charAt(0).toUpperCase() + type.slice(1)}

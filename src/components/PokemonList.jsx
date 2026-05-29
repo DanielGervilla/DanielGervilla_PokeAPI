@@ -135,9 +135,19 @@ export default function PokemonList() {
             setIsShinyOnly(false);
             setIsFavoritesOnly(false);
           }}
-          style={{ marginBottom: '20px', background: 'none', border: 'none', color: accentColor, textDecoration: 'underline', cursor: 'pointer', fontWeight: '600', padding: 0 }}
+          style={{ 
+            marginBottom: '30px', 
+            backgroundColor: '#000', 
+            color: '#fff', 
+            border: 'none', 
+            cursor: 'pointer', 
+            fontWeight: '900', 
+            padding: '10px 20px',
+            fontFamily: 'monospace',
+            textTransform: 'uppercase'
+          }}
         >
-          Neteja tots els filtres
+          💥 RESET FILTRES
         </button>
       )}
 

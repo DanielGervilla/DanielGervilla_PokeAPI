@@ -19,13 +19,22 @@ export default function PokemonCard({ pokemon, onLikeClick, isShinyOnly }) {
   const displaySprite = isShinyOnly && hasShinySprite ? pokemon.sprites.front_shiny : pokemon.sprites.front_default;
 
   return (
-    <div className="pokemon-card" style={{ border: '3px solid #000', boxShadow: '5px 5px 0px #000', borderRadius: '0', backgroundColor: '#efefef' }}>
+    <div 
+      className="pokemon-card" 
+      style={{ 
+        border: '4px solid #000', 
+        boxShadow: '6px 6px 0px #000', 
+        borderRadius: '0', 
+        backgroundColor: '#fff',
+        transition: 'all 0.2s ease'
+      }}>
       <div className="pokemon-image" style={{ 
         backgroundColor: 'white', 
         backgroundImage: 'linear-gradient(180deg, #ddd 0%, #fff 100%)',
-        borderBottom: '3px solid #000', 
-        margin: '5px', 
-        boxShadow: 'inset 0 0 10px rgba(0,0,0,0.1)'
+        borderBottom: '4px solid #000', 
+        padding: '10px',
+        display: 'flex',
+        justifyContent: 'center'
       }}>
         <img
           src={displaySprite}
@@ -35,7 +44,7 @@ export default function PokemonCard({ pokemon, onLikeClick, isShinyOnly }) {
       </div>
 
       <div className="pokemon-info">
-        <h3 className="pokemon-name" style={{ fontFamily: 'monospace', fontWeight: '900', textTransform: 'uppercase', color: 'black' }}>
+        <h3 className="pokemon-name" style={{ fontFamily: 'monospace', fontWeight: '900', textTransform: 'uppercase', color: 'black', margin: '10px 0', fontSize: '1.2rem' }}>
           {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
         </h3>
 
@@ -44,13 +53,13 @@ export default function PokemonCard({ pokemon, onLikeClick, isShinyOnly }) {
             <span
               key={typeObj.type.name}
               className={`type-badge type-${typeObj.type.name}`}
-              style={{ borderRadius: '0', border: '1px solid black', fontSize: '0.7rem' }}
+              style={{ borderRadius: '0', border: '2px solid black', fontSize: '0.7rem', fontWeight: 'bold' }}
             >
-              {typeObj.type.name}
+              {typeObj.type.name.toUpperCase()}
             </span>
           ))}
           {hasShinySprite && (
-            <span className="type-badge shiny-tag" style={{ borderRadius: '0', border: '1px solid black', fontSize: '0.7rem', backgroundColor: '#ffd700', color: 'black' }}>
+            <span className="type-badge shiny-tag" style={{ borderRadius: '0', border: '2px solid black', fontSize: '0.7rem', backgroundColor: '#ffd700', color: 'black', fontWeight: 'bold' }}>
               ✨ SHINY
             </span>
           )}
@@ -63,13 +72,19 @@ export default function PokemonCard({ pokemon, onLikeClick, isShinyOnly }) {
             onLikeClick(pokemon.id);
           }}
           style={{ 
+            width: '100%',
+            marginTop: '10px',
             borderRadius: '0', 
-            border: '2px solid black', 
-            boxShadow: liked ? 'none' : '2px 2px 0px black',
-            transform: liked ? 'translate(1px, 1px)' : 'none'
+            border: '3px solid black', 
+            boxShadow: liked ? 'none' : '4px 4px 0px black',
+            transform: liked ? 'translate(2px, 2px)' : 'none',
+            backgroundColor: liked ? '#ff5555' : '#55ff55',
+            color: 'black',
+            fontWeight: '900',
+            cursor: 'pointer'
           }}
         >
-          {liked ? 'Favorit' : 'Afegir'}
+          {liked ? '❤️ FAVORIT' : '➕ AFEGIR'}
         </button>
       </div>
     </div>
